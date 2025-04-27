@@ -1,6 +1,6 @@
 # Contenedor Docker para Procesamiento con Ghostscript
 
-Este repositorio contiene un `Dockerfile` para construir una imagen Docker basada en Ubuntu 14.04 que incluye `ghostscript` y `netcat`. El propósito principal de este contenedor es ejecutar un script (`process.sh`) que utiliza Ghostscript para realizar tareas de procesamiento de archivos, como la generación de miniaturas de PDF.
+Este repositorio contiene un `Dockerfile` para construir una imagen Docker basada en Ubuntu 14.04 que incluye `ghostscript` y `netcat`. El propósito principal de este contenedor es comprobar la vulnerabilidad existente en Ghostscript en versiones anteriores y cómo poder explotarla.
 
 ## Contenido de la Imagen
 
