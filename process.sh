@@ -9,8 +9,8 @@ fi
 
 INPUT_PDF="$1"
 # Define el nombre del archivo de salida. Si no se proporciona el segundo argumento,
-# usa el nombre del PDF cambiando la extensión a _thumb.jpg
-OUTPUT_THUMBNAIL="${2:-${INPUT_PDF%.pdf}_thumb.jpg}"
+# usa el nombre del PDF cambiando la extensión a _thumb.png
+OUTPUT_THUMBNAIL="${2:-${INPUT_PDF%.pdf}_thumb.png}"
 RESOLUTION=150 # Resolución en DPI para la miniatura (ajusta según necesites)
 
 echo "Procesando PDF: $INPUT_PDF"
@@ -22,7 +22,7 @@ if [ ! -f "$INPUT_PDF" ]; then
     exit 1
 fi
 
-# Comando de Ghostscript para generar una miniatura JPEG de la primera página
+# Comando de Ghostscript para generar una miniatura PNG de la primera página
 gs \
   -dBATCH \
   -dNOPAUSE \

@@ -60,3 +60,40 @@ Este script es el punto de entrada del contenedor. Está diseñado para:
 4.  Guardar la miniatura en el directorio de trabajo (`/app`, que está montado desde tu sistema local).
 
 Puedes modificar `process.sh` para adaptar el comportamiento del contenedor a tus necesidades específicas de procesamiento con Ghostscript o Netcat.
+## Ejecución con Docker Compose
+
+Se proporciona un archivo `docker-compose.yml` para simplificar la ejecución del contenedor, especialmente la gestión del montaje de volúmenes.
+
+**Preparación:**
+
+1.  Asegúrate de tener `docker-compose` instalado.
+2.  Crea un directorio llamado `data` en la misma carpeta donde se encuentran `docker-compose.yml`, `Dockerfile` y `process.sh`:
+    ```bash
+    mkdir data
+    ```
+3.  Coloca los archivos PDF que deseas procesar dentro de este directorio `data`.
+
+**Ejecución:**
+
+Abre una terminal en el directorio que contiene el archivo `docker-compose.yml` y ejecuta los siguientes comandos:
+
+1.  **Generar miniatura con nombre por defecto (`documento_thumb.jpg`):**
+    *   Asegúrate de que `documento.pdf` está en el directorio `data`.
+    ```bash
+    docker-compose run --rm processor documento.pdf
+    ```
+
+2.  **Generar miniatura con nombre específico (`miniatura_salida.jpg`):**
+    *   Asegúrate de que `documento.pdf` está en el directorio `data`.
+    ```bash
+    docker-compose run --rm processor documento.pdf miniatura_salida.jpg
+    ```
+
+**Explicación del comando `docker-compose run`:**
+
+*   `docker-compose run`: Ejecuta un comando único para un servicio definido en `docker-compose.yml`.
+*   `--rm`: Elimina el contenedor una vez que el script finaliza.
+*   `processor`: Es el nombre del servicio definido en el archivo `docker-compose.yml`.
+*   `documento.pdf` / `documento.pdf miniatura_salida.jpg`: Son los argumentos que se pasan al script `process.sh` dentro del contenedor.
+
+La miniatura generada se guardará en el directorio `data` de tu máquina local, ya que está montado como volumen en el contenedor.

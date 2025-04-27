@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '3.8' # Puedes usar una versión compatible con tu Docker Compose
+
+services:
+  processor:
+    # Construye la imagen desde el Dockerfile en el directorio actual
+    build: .
+    # Nombre de la imagen que se construirá (opcional, pero útil)
+    image: mi-imagen-procesadora-compose
+    # Monta un directorio local llamado 'data' en el directorio /app del contenedor
+    # Aquí es donde debes colocar tus archivos PDF de entrada
+    # y donde se guardarán las miniaturas generadas.
+    volumes:
+      - ./data:/app
+    # El comando por defecto se define en el Dockerfile (ENTRYPOINT + CMD)
+    # Para ejecutar con argumentos específicos, usarás 'docker-compose run' (ver abajo)
+
