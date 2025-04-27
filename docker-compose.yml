@@ -6,7 +6,7 @@ services:
     # Construye la imagen desde el Dockerfile en el directorio actual
     build: .
     # Nombre de la imagen que se construirá (opcional, pero útil)
-    image: mi-imagen-procesadora-compose
+    image: ghostscript-challenge
     # Monta un directorio local llamado 'data' en el directorio /app del contenedor
     # Aquí es donde debes colocar tus archivos PDF de entrada
     # y donde se guardarán las miniaturas generadas.

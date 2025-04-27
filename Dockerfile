@@ -16,17 +16,17 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Copia el script de procesamiento al directorio de trabajo
-COPY process.sh .
+COPY process.sh /process.sh
 
 # Asegúrate de que el script tenga permisos de ejecución
-RUN chmod +x ./process.sh
+RUN chmod +x /process.sh
 
 # Define el script como el punto de entrada principal del contenedor.
 # Esto significa que cuando ejecutes el contenedor, se ejecutará este script.
 # Los argumentos pasados a `docker run` se añadirán después de ./process.sh
-ENTRYPOINT ["./process.sh"]
+# ENTRYPOINT ["./process.sh"]
 
 # Opcional: Define un comando por defecto si no se pasan argumentos al ENTRYPOINT.
 # En este caso, si ejecutas `docker run mi-imagen` sin argumentos,
 # el script `process.sh` se ejecutará sin argumentos y mostrará su mensaje de uso.
-CMD ["--help"]
+CMD ["sh","/process.sh"]
