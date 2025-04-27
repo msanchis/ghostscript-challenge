@@ -27,14 +27,8 @@ gs \
   -dBATCH \
   -dNOPAUSE \
   -sDEVICE=png16m \
-  -dFirstPage=1 \
-  -dLastPage=1 \
   -sOutputFile="$OUTPUT_THUMBNAIL" \
-  -dJPEGQ=85 \
-  -r"$RESOLUTION" \
-  -q \
-  "$INPUT_PDF" \
-  -c quit
+  "$INPUT_PDF" 
 
 # Verifica si Ghostscript se ejecutó correctamente
 if [ $? -eq 0 ]; then
